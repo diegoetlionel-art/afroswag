@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afro Swag Barbershop</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#003893;
+  color:white;
+  text-align:center;
+  margin:0;
+}
+header{
+  background:#002868;
+  padding:30px 20px;
+}
+.logo{
+  font-size:40px;
+  color:#FFD700;
+  font-weight:bold;
+}
+.logo span{
+  color:#CF2027;
+}
+.container{
+  max-width:700px;
+  margin:20px auto;
+  background:#001f4d;
+  padding:25px;
+  border-radius:12px;
+}
+input,select,button{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
+  border:none;
+  font-size:16px;
+  box-sizing:border-box;
+}
+button{
+  background:#CF2027;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{
+  opacity:0.95;
+}
+.slots{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:10px;
+}
+.slot{
+  background:#FFD700;
+  color:black;
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.slot.selected{
+  background:#CF2027;
+  color:white;
+}
+.map-frame{
+  width:100%;
+  height:300px;
+  border:0;
+  border-radius:10px;
+}
+.qr{
+  background:white;
+  padding:10px;
+  border-radius:10px;
+  display:inline-block;
+}
+.small{
+  font-size:14px;
+  opacity:0.9;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">💈 AFRO <span>SWAG</span></div>
+  <p>31 Rue Gillibert — Marseille</p>
+
+  <a href="tel:0751366875">
+    <button>📞 Appeler</button>
+  </a>
+
+  <a href="https://wa.me/33751366875" target="_blank">
+    <button style="background:#25D366;">💬 WhatsApp</button>
+  </a>
+</header>
+
+<div class="container">
+  <h2>Réserver</h2>
+
+  <select id="service">
+    <option>Coupe enfant - 10€</option>
+    <option>Coupe adulte - 15€</option>
+    <option>Barbe</option>
+    <option>Coupe + barbe</option>
+    <option>Teinture</option>
+  </select>
+
+  <input type="date" id="date">
+
+  <div class="slots" id="slots">
+    <div class="slot">10:00</div>
+    <div class="slot">11:00</div>
+    <div class="slot">12:00</div>
+    <div class="slot">13:00</div>
+    <div class="slot">14:00</div>
+    <div class="slot">15:00</div>
+    <div class="slot">16:00</div>
+    <div class="slot">17:00</div>
+    <div class="slot">18:00</div>
+    <div class="slot">19:00</div>
+    <div class="slot">20:00</div>
+    <div class="slot">21:00</div>
+    <div class="slot">22:00</div>
+  </div>
+
+  <input type="text" id="nom" placeholder="Nom">
+  <input type="text" id="telephone" placeholder="Téléphone">
+
+  <button onclick="reserver()">Réserver</button>
+  <p class="small">Le blocage automatique réel des créneaux demande une base de données. Là, c’est la version visuelle locale.</p>
+</div>
+
+<div class="container">
+  <h2>📱 QR code du salon</h2>
+  <p>Les clients peuvent scanner pour ouvrir le site.</p>
+  <div class="qr">
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://salonafroswag.netlify.app/"
+      alt="QR code Afro Swag"
+      width="220"
+      height="220"
+    >
+  </div>
+  <p class="small">Après la mise en ligne, remplace le lien par ton vrai lien Netlify.</p>
+</div>
+
+<div class="container">
+  <h2>🗺️ Nous trouver</h2>
+  <p>31 Rue Gillibert, Marseille</p>
+  <iframe
+    class="map-frame"
+    loading="lazy"
+    allowfullscreen
+    src="https://www.google.com/maps?q=31+Rue+Gillibert+Marseille&output=embed">
+  </iframe>
+</div>
+
+<script>
+let selectedHeure = "";
+
+document.querySelectorAll(".slot").forEach(slot => {
+  slot.addEventListener("click", () => {
+    document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
+    slot.classList.add("selected");
+    selectedHeure = slot.textContent;
+  });
+});
+
+function reserver(){
+  const service = document.getElementById("service").value;
+  const date = document.getElementById("date").value;
+  const nom = document.getElementById("nom").value.trim();
+  const telephone = document.getElementById("telephone").value.trim();
+
+  if(!date || !nom || !telephone || !selectedHeure){
+    alert("Remplis tous les champs et choisis une heure.");
+    return;
+  }
+
+  alert(
+    "Réservation enregistrée :\n\n" +
+    "Nom : " + nom + "\n" +
+    "Téléphone : " + telephone + "\n" +
+    "Service : " + service + "\n" +
+    "Date : " + date + "\n" +
+    "Heure : " + selectedHeure
+  );
+}
+</script>
+
+</body>
+</html>
