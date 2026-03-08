@@ -3,196 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Afro Swag Barbershop</title>
 
 <style>
+
 body{
-  font-family: Arial, sans-serif;
-  background:#003893;
-  color:white;
-  text-align:center;
-  margin:0;
+font-family:Arial;
+background:#003893;
+color:white;
+text-align:center;
+margin:0;
 }
+
 header{
-  background:#002868;
-  padding:30px 20px;
+background:#002868;
+padding:30px;
 }
+
 .logo{
-  font-size:40px;
-  color:#FFD700;
-  font-weight:bold;
+width:120px;
+height:120px;
+margin:auto;
+background:white;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+color:#002868;
+font-size:20px;
 }
-.logo span{
-  color:#CF2027;
+
+h1{
+color:#FFD700;
+margin:10px 0;
 }
+
 .container{
-  max-width:700px;
-  margin:20px auto;
-  background:#001f4d;
-  padding:25px;
-  border-radius:12px;
+max-width:600px;
+margin:auto;
+background:#001f4d;
+padding:25px;
+border-radius:15px;
+margin-top:20px;
 }
+
 input,select,button{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:6px;
-  border:none;
-  font-size:16px;
-  box-sizing:border-box;
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:none;
+font-size:16px;
 }
+
 button{
-  background:#CF2027;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+background:#CF2027;
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
-button:hover{
-  opacity:0.95;
+
+.btncall{
+background:#FFD700;
+color:black;
 }
+
+.btnwa{
+background:#25D366;
+}
+
 .slots{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:10px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
 }
+
 .slot{
-  background:#FFD700;
-  color:black;
-  padding:12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
+background:#FFD700;
+color:black;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
 }
+
 .slot.selected{
-  background:#CF2027;
-  color:white;
+background:#CF2027;
+color:white;
 }
-.map-frame{
-  width:100%;
-  height:300px;
-  border:0;
-  border-radius:10px;
+
+.map{
+width:100%;
+height:300px;
+border:0;
+border-radius:10px;
 }
+
 .qr{
-  background:white;
-  padding:10px;
-  border-radius:10px;
-  display:inline-block;
+background:white;
+padding:10px;
+border-radius:10px;
+display:inline-block;
 }
-.small{
-  font-size:14px;
-  opacity:0.9;
-}
+
 </style>
+
 </head>
+
 <body>
 
 <header>
-  <div class="logo">💈 AFRO <span>SWAG</span></div>
-  <p>31 Rue Gillibert — Marseille</p>
 
-  <a href="tel:0751366875">
-    <button>📞 Appeler</button>
-  </a>
+<div class="logo">AFRO SWAG</div>
 
-  <a href="https://wa.me/33751366875" target="_blank">
-    <button style="background:#25D366;">💬 WhatsApp</button>
-  </a>
+<h1>AFRO SWAG</h1>
+
+<p>31 Rue Gillibert — Marseille</p>
+<p>Ouvert mardi à samedi • 10h → 22h</p>
+
+<a href="tel:0751366875">
+<button class="btncall">📞 Appeler</button>
+</a>
+
+<a href="https://wa.me/33751366875">
+<button class="btnwa">💬 WhatsApp</button>
+</a>
+
 </header>
 
 <div class="container">
-  <h2>Réserver</h2>
 
-  <select id="service">
-    <option>Coupe enfant - 10€</option>
-    <option>Coupe adulte - 15€</option>
-    <option>Barbe</option>
-    <option>Coupe + barbe</option>
-    <option>Teinture</option>
-  </select>
+<h2>Réserver</h2>
 
-  <input type="date" id="date">
+<form action="https://formsubmit.co/diegoetlionel@gmail.com" method="POST">
 
-  <div class="slots" id="slots">
-    <div class="slot">10:00</div>
-    <div class="slot">11:00</div>
-    <div class="slot">12:00</div>
-    <div class="slot">13:00</div>
-    <div class="slot">14:00</div>
-    <div class="slot">15:00</div>
-    <div class="slot">16:00</div>
-    <div class="slot">17:00</div>
-    <div class="slot">18:00</div>
-    <div class="slot">19:00</div>
-    <div class="slot">20:00</div>
-    <div class="slot">21:00</div>
-    <div class="slot">22:00</div>
-  </div>
+<input type="hidden" name="_subject" value="Nouvelle réservation Afro Swag">
+<input type="hidden" name="_captcha" value="false">
 
-  <input type="text" id="nom" placeholder="Nom">
-  <input type="text" id="telephone" placeholder="Téléphone">
+<select name="service" required>
 
-  <button onclick="reserver()">Réserver</button>
-  <p class="small">Le blocage automatique réel des créneaux demande une base de données. Là, c’est la version visuelle locale.</p>
+<option value="">Choisir service</option>
+<option>Coupe enfant - 10€</option>
+<option>Coupe adulte - 15€</option>
+<option>Barbe</option>
+<option>Coupe + barbe</option>
+<option>Teinture</option>
+
+</select>
+
+<input type="date" name="date" id="date" required>
+
+<div class="slots">
+
+<div class="slot">10:00</div>
+<div class="slot">11:00</div>
+<div class="slot">12:00</div>
+<div class="slot">13:00</div>
+<div class="slot">14:00</div>
+<div class="slot">15:00</div>
+<div class="slot">16:00</div>
+<div class="slot">17:00</div>
+<div class="slot">18:00</div>
+<div class="slot">19:00</div>
+<div class="slot">20:00</div>
+<div class="slot">21:00</div>
+<div class="slot">22:00</div>
+
+</div>
+
+<input type="hidden" name="heure" id="heure">
+
+<input type="text" name="nom" placeholder="Nom" required>
+<input type="text" name="telephone" placeholder="Téléphone" required>
+
+<button type="submit">Réserver</button>
+
+</form>
+
 </div>
 
 <div class="container">
-  <h2>📱 QR code du salon</h2>
-  <p>Les clients peuvent scanner pour ouvrir le site.</p>
-  <div class="qr">
-    <img
-      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://diegoetlionel-art.github.io/afroswag/"
-      alt="QR code Afro Swag"
-      width="220"
-      height="220"
-    >
-  </div>
-  <p class="small">Après la mise en ligne, remplace le lien par ton vrai lien Netlify.</p>
+
+<h2>Scanner pour réserver</h2>
+
+<div class="qr">
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://salonafroswag.neocities.org">
+
+</div>
+
 </div>
 
 <div class="container">
-  <h2>🗺️ Nous trouver</h2>
-  <p>31 Rue Gillibert, Marseille</p>
-  <iframe
-    class="map-frame"
-    loading="lazy"
-    allowfullscreen
-    src="https://www.google.com/maps?q=31+Rue+Gillibert+Marseille&output=embed">
-  </iframe>
+
+<h2>Nous trouver</h2>
+
+<iframe class="map"
+src="https://www.google.com/maps?q=31+Rue+Gillibert+Marseille&output=embed">
+</iframe>
+
 </div>
 
 <script>
-let selectedHeure = "";
 
-document.querySelectorAll(".slot").forEach(slot => {
-  slot.addEventListener("click", () => {
-    document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
-    slot.classList.add("selected");
-    selectedHeure = slot.textContent;
-  });
-});
+let slots=document.querySelectorAll(".slot")
+let heureInput=document.getElementById("heure")
 
-function reserver(){
-  const service = document.getElementById("service").value;
-  const date = document.getElementById("date").value;
-  const nom = document.getElementById("nom").value.trim();
-  const telephone = document.getElementById("telephone").value.trim();
+slots.forEach(slot=>{
 
-  if(!date || !nom || !telephone || !selectedHeure){
-    alert("Remplis tous les champs et choisis une heure.");
-    return;
-  }
+slot.addEventListener("click",function(){
 
-  alert(
-    "Réservation enregistrée :\n\n" +
-    "Nom : " + nom + "\n" +
-    "Téléphone : " + telephone + "\n" +
-    "Service : " + service + "\n" +
-    "Date : " + date + "\n" +
-    "Heure : " + selectedHeure
-  );
-}
+slots.forEach(s=>s.classList.remove("selected"))
+
+this.classList.add("selected")
+
+heureInput.value=this.innerText
+
+})
+
+})
+
 </script>
 
 </body>
